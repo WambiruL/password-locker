@@ -100,9 +100,9 @@ class TestCredentials(unittest.TestCase):
         test_credential=Credentials("Instagram", "lorrainewambui", "marimar")
         test_credential.save_credentials()
 
-        found_credentials=Credentials.find_credentials("Instagram")
+        found_credential=Credentials.find_credentials("Instagram")
 
-        self.assertEqual(found_credentials.account, test_credential.account)
+        self.assertEqual(found_credential.account, test_credential.account)
 
 
 
