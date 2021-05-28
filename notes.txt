@@ -1,0 +1,8 @@
+attributes: names,email,username,password
+behavior:
+    store my already existing account credentials in the application
+    create new account credentials in the application.
+    option of putting in a password that I want to use for the new credential account.
+    view my various account credentials and their passwords in the application.
+    delete a credentials account that I no longer need in the application.
+    create a password locker account with my details, a login username and password.
