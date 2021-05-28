@@ -29,3 +29,5 @@ class TestUser(unittest.TestCase): #Unittest.Testcase helps in creating test cas
         self.new_user.save_user()
         self.assertEqual(len(User.user_list), 1)
 
+
+
