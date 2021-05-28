@@ -1,5 +1,6 @@
 import unittest
 from passlock import User
+from passlock import Credentials
 
 class TestUser(unittest.TestCase): #Unittest.Testcase helps in creating test cases
     """
@@ -28,6 +29,12 @@ class TestUser(unittest.TestCase): #Unittest.Testcase helps in creating test cas
 
         self.new_user.save_user()
         self.assertEqual(len(User.user_list), 1)
+
+class TestCredentials(unittest.TestCase):
+    """
+    Test class that defines test cases for the credential class
+    """
+    
 
 
 
