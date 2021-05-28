@@ -85,4 +85,12 @@ def credential_exists(Credentials,account):
             return True
     return False
 
+@classmethod
+def display_credentials(Credentials):
+    """
+    Method that returns the contact list
+    """
+
+    return Credentials.credentials_list
+
     
