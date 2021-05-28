@@ -56,6 +56,8 @@ class TestCredentials(unittest.TestCase):
             Method that does clean up after each test case has run
             """
 
+            Credentials.credentials_list=[]
+
     def save_credential_test(self):
         """
         Test case to test if credential object is saved into the credentials list
@@ -74,6 +76,22 @@ class TestCredentials(unittest.TestCase):
         test_credentials=Credentials("Instagram", "lorrainewambui", "marimar")
         test_credentials.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),2)
+
+    def test_delete_credentials(self):
+
+        """
+        Test if we can remove a credential from the list
+        """
+
+        self.new_credential.save_credentials()
+        test_credential=Credentials("Instagram", "lorrainewambui", "marimar")
+        test_credential.save_credentials()
+
+        self.new_credential.delete_contact()
+        self.assertEqual(len(Credentials.credentials_list),1)
+
+if __name__=='__main__':
+    unittest.main()
 
 
 
