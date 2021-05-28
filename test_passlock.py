@@ -1,5 +1,5 @@
 import unittest
-from passlock import User
+from passlock import User, credential_exists
 from passlock import Credentials
 
 class TestUser(unittest.TestCase): #Unittest.Testcase helps in creating test cases
@@ -103,6 +103,19 @@ class TestCredentials(unittest.TestCase):
         found_credential=Credentials.find_credentials("Instagram")
 
         self.assertEqual(found_credential.account, test_credential.account)
+
+    def test_credential_exists(self):
+        """
+        test if we can return true or false if we cannot find credential
+        """
+
+        self.new_credential.save_credentials()
+        test_credential=Credentials("Instagram", "lorrainewambui", "marimar")
+        test_credential.save_credentials()
+
+        credential_exists=Credentials.credential_exist("Instagram")
+
+        self.assertTrue(credential_exists) 
 
 
 

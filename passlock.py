@@ -82,6 +82,7 @@ def credential_exists(Credentials,account):
 
     for credential in Credentials.credentials_list:
         if credential.account==account:
-            return credential
+            return True
+    return False
 
     
