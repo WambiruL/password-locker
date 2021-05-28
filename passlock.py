@@ -74,6 +74,14 @@ def find_credentials(Credentials,account):
         if credential.account==account:
             return credential
 
+@classmethod
+def credential_exists(Credentials,account):
+    """
+    Method that checks if credentials exists from credentials list
+    """
 
+    for credential in Credentials.credentials_list:
+        if credential.account==account:
+            return credential
 
     
