@@ -4,5 +4,5 @@ behavior:
     create new account credentials in the application. #done
     option of putting in a password that I want to use for the new credential account.
     view my various account credentials and their passwords in the application.
-    delete a credentials account that I no longer need in the application.
+    delete a credentials account that I no longer need in the application.#done
     create a password locker account with my details, a login username and password.#done
