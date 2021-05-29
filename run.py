@@ -30,3 +30,9 @@ def login_user(username,password):
 
     check_user=Credentials.user_exist(username,password)
     return check_user
+
+def create_new_credentials(credentials):
+    """
+    Function to save credentials to credentials list
+    """
+    credentials.save_credentials()
