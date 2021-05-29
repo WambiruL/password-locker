@@ -1,7 +1,7 @@
 import unittest
 from passlock import User
 from passlock import Credentials
-import pyperclip
+
 
 
 class TestUser(unittest.TestCase): #Unittest.Testcase helps in creating test cases

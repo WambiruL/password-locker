@@ -118,7 +118,7 @@ def passlocker():
             print('\n')
             
     while True:
-        print("Use these short codes:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n GP - Generate A randomn password \n D - Delete credential \n EX - Exit the application \n")
+        print(" \u001b[33m Use these short codes:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n GP - Generate A randomn password \n D - Delete credential \n EX - Exit the application \n")
         short_code = input().lower().strip()
         if short_code == "cc":
             print("Create New Credential")
@@ -137,7 +137,7 @@ def passlocker():
                     password = generate_password()
                     break
                 else:
-                    print("Invalid password please try again")
+                    print("\u001b[31m Invalid choice please try again")
             save_credentials(create_new_credentials(account,userName,password))
             print('\n')
             print(f"Account Credential for: {account} - UserName: {userName} - Password:{password} created succesfully")
@@ -184,7 +184,7 @@ def passlocker():
             password = generate_password()
             print(f" {password} Has been generated succesfull. You can proceed to use it to your account")
         elif short_code == 'ex':
-            print("Thanks for using password locks manager.. See you next time!")
+            print("\u001b[35m Thanks for using password locks manager.. See you next time!")
             break
         else:
             print("Wrong entry... Check your entry again and let it match those in the menu")
