@@ -26,8 +26,16 @@ class User:
 
         User.user_list.append(self) 
 
-@classmethod
-def user_exist(cls,username,password):
+
+class Credentials:
+    """
+    Class that generates new instances of credentials
+    """ 
+
+    credentials_list=[]
+
+    @classmethod
+    def user_exist(cls,username,password):
         """
         Method that checks if a user exists from the user_list
         """
@@ -37,15 +45,7 @@ def user_exist(cls,username,password):
                 a_user==user.username
         return a_user
 
-class Credentials:
-    """
-    Class that generates new instances of credentials
-    """ 
-
-    credentials_list=[]
-    
-    
-
+        
     def __init__(self,account,username,password):
         """
         Method that defines user credentials to be stored
@@ -76,7 +76,7 @@ def find_credentials(cls,account):
     """
 
     for credential in cls.credentials_list:
-        if credential.account==account:
+        if credential.account == account:
                 return credential
 
 @classmethod
@@ -100,7 +100,7 @@ def display_credentials(cls):
 
 @classmethod
 def copy_password(cls,account):
-    found_credentials=Credentials.find_credential(account)
+    found_credentials=cls.find_credential(account)
     pyperclip.copy(found_credentials.password)
 
 def generatePassword(stringLength=8):
