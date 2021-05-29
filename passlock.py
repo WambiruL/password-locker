@@ -27,7 +27,7 @@ class User:
         User.user_list.append(self) 
 
 
-class Credentials:
+class Credentials():
     """
     Class that generates new instances of credentials
     """ 
@@ -70,7 +70,7 @@ class Credentials:
         Credentials.credentials_list.remove(self)
 
 @classmethod
-def find_credentials(cls,account):
+def find_credential(cls,account):
     """
     Method that takes in account name and returns credentials that match that account
     """
@@ -100,7 +100,7 @@ def display_credentials(cls):
 
 @classmethod
 def copy_password(cls,account):
-    found_credentials=cls.find_credential(account)
+    found_credentials= Credentials.find_credential(account)
     pyperclip.copy(found_credentials.password)
 
 def generatePassword(stringLength=8):

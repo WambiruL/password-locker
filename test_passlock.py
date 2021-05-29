@@ -42,7 +42,7 @@ class TestCredentials(unittest.TestCase):
             Method that runs before each credentials test
             """
 
-            self.new_credential=Credentials("Gmail", "Lorraine Wambui", "Salamander")
+            self.new_credential=Credentials("Gmail", "Lorraine_Wambui", "Salamander")
 
     def test_init(self):
         """
@@ -50,15 +50,8 @@ class TestCredentials(unittest.TestCase):
         """
 
         self.assertEqual(self.new_credential.account, "Gmail")
-        self.assertEqual(self.new_credential.username, "Lorraine Wambui")
+        self.assertEqual(self.new_credential.username, "Lorraine_Wambui")
         self.assertEqual(self.new_credential.password, "Salamander")
-
-    def tearDown(self):
-            """
-            Method that does clean up after each test case has run
-            """
-
-            Credentials.credentials_list=[]
 
     def save_credential_test(self):
         """
@@ -68,9 +61,15 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),1)
 
+    def tearDown(self):
+            """
+            Method that does clean up after each test case has run
+            """
+
+            Credentials.credentials_list=[]
       
 
-    def test_save_multiple_credentials(self):
+    def test_save_multiple_accounts(self):
         """
         test case to check if we can save multiple credentials
         """
@@ -101,10 +100,10 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.save_credentials()
         test_credential=Credentials("Instagram", "lorrainewambui", "marimar")
         test_credential.save_credentials()
-
-        found_credential= Credentials.find_credentials("Instagram")
-
-        self.assertEqual(found_credential.account, test_credential.account)
+       
+        the_credential= Credentials.find_credential("Instagram")
+        print("This works")
+        self.assertEqual(the_credential.account, test_credential.account)
 
     def test_credential_exists(self):
         """
@@ -125,18 +124,6 @@ class TestCredentials(unittest.TestCase):
         """
 
         self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
-
-    def test_copy_password(self):
-        '''
-        Test to confirm that we are copying the password from a found credential
-        '''
-
-        self.new_credential.save_credentials()
-        Credentials.copy_password("marimar")
-
-        self.assertEqual(self.new_credential.password,pyperclip.paste())
-
-
 
 
 if __name__=='__main__':
