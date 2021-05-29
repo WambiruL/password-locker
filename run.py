@@ -43,3 +43,10 @@ def save_credentials(credentials):
     Function to save credentials to credentials list
     """
     credentials.save_credentials()
+
+def display_accounts_details():
+    """
+    Function that returns all saved contacts
+    """
+
+    return Credentials.display_credentials()
