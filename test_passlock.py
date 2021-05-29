@@ -1,6 +1,8 @@
 import unittest
-from passlock import User, credential_exists
+from passlock import User
 from passlock import Credentials
+import pyperclip
+
 
 class TestUser(unittest.TestCase): #Unittest.Testcase helps in creating test cases
     """
@@ -100,7 +102,7 @@ class TestCredentials(unittest.TestCase):
         test_credential=Credentials("Instagram", "lorrainewambui", "marimar")
         test_credential.save_credentials()
 
-        found_credential=Credentials.find_credentials("Instagram")
+        found_credential= Credentials.find_credentials("Instagram")
 
         self.assertEqual(found_credential.account, test_credential.account)
 
@@ -113,7 +115,7 @@ class TestCredentials(unittest.TestCase):
         test_credential=Credentials("Instagram", "lorrainewambui", "marimar")
         test_credential.save_credentials()
 
-        credential_exists=Credentials.credential_exist("Instagram")
+        credential_exists = Credentials.if_credential_exist("Instagram")
 
         self.assertTrue(credential_exists) 
 
@@ -123,6 +125,16 @@ class TestCredentials(unittest.TestCase):
         """
 
         self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
+
+    def test_copy_password(self):
+        '''
+        Test to confirm that we are copying the password from a found credential
+        '''
+
+        self.new_credential.save_credentials()
+        Credentials.copy_password("marimar")
+
+        self.assertEqual(self.new_credential.password,pyperclip.paste())
 
 
 

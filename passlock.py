@@ -1,3 +1,5 @@
+import pyperclip
+
 class User:
     """
     A class that generates new instances of users
@@ -22,16 +24,8 @@ class User:
 
         User.user_list.append(self) 
 
-
-class Credentials:
-    """
-    Class that generates new instances of credentials
-    """ 
-
-    credentials_list=[]
-    
-    @classmethod
-    def user_exist(cls,username,password):
+@classmethod
+def user_exist(cls,username,password):
         """
         Method that checks if a user exists from the user_list
         """
@@ -40,6 +34,15 @@ class Credentials:
             if (user.username==username and user.password==password):
                 a_user==user.username
         return a_user
+
+class Credentials:
+    """
+    Class that generates new instances of credentials
+    """ 
+
+    credentials_list=[]
+    
+    
 
     def __init__(self,account,username,password):
         """
@@ -65,32 +68,40 @@ class Credentials:
         Credentials.credentials_list.remove(self)
 
 @classmethod
-def find_credentials(Credentials,account):
+def find_credentials(cls,account):
     """
     Method that takes in account name and returns credentials that match that account
     """
 
-    for credential in Credentials.credentials_list:
+    for credential in cls.credentials_list:
         if credential.account==account:
-            return credential
+                return credential
 
 @classmethod
-def credential_exists(Credentials,account):
+def if_credential_exist(cls,account):
     """
     Method that checks if credentials exists from credentials list
     """
 
-    for credential in Credentials.credentials_list:
+    for credential in cls.credentials_list:
         if credential.account==account:
             return True
     return False
 
 @classmethod
-def display_credentials(Credentials):
+def display_credentials(cls):
     """
     Method that returns the contact list
     """
 
-    return Credentials.credentials_list
+    return cls.credentials_list
 
-    
+@classmethod
+def copy_password(cls,account):
+    found_credentials=Credentials.find_credential(account)
+    pyperclip.copy(found_credentials.password)
+
+
+
+
+  
